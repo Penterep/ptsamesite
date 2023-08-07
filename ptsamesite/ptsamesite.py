@@ -31,12 +31,12 @@ import tldextract
 
 class PtSamesite:
     def __init__(self, args):
-        self.ptjsonlib          = ptjsonlib.PtJsonLib()
-        self.ptthreads          = ptthreads.PtThreads()
-        self.use_json           = args.json
-        self.vulnerable         = args.vulnerable
-        self.subdomains         = args.subdomains
-        self.result_list        = []
+        self.ptjsonlib   = ptjsonlib.PtJsonLib()
+        self.ptthreads   = ptthreads.PtThreads()
+        self.use_json    = args.json
+        self.vulnerable  = args.vulnerable
+        self.subdomains  = args.subdomains
+        self.result_list = list()
 
         try:
             self.domain_list = ptmisclib.read_file(args.file) if args.file else args.domain
