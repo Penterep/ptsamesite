@@ -3,11 +3,9 @@
 
 # PTSAMESITE
 
-> Same site scripting detection tool
+> Same Site Scripting Detection Tool
 
-ptsamesite is a tool that tests domains for same site scripting vulnerability. <br />
-ptsamesite utilizes threading for fast parallel domain testing.
-
+ptsamesite is a tool that tests domains for same site scripting vulnerability.
 
 ## Installation
 
@@ -26,8 +24,8 @@ source ~/.bashrc
 
 > Add to PATH for ZSH
 ```bash
-echo "export PATH=\"`python3 -m site --user-base`/bin:\$PATH\"" >> ~/.zshhrc
-source ~/.zshhrc
+echo "export PATH=\"`python3 -m site --user-base`/bin:\$PATH\"" >> ~/.zshrc
+source ~/.zshrc
 ```
 
 ## Usage examples
@@ -36,7 +34,7 @@ ptsamesite -d example.com                               # Test domain
 ptsamesite -d example.com example2.com                  # Test two domains
 ptsamesite -d subdomain1.subdomain2.example.com -s      # Test domain along with all subdomains
 ptsamesite -f domain_list.txt                           # Test domains from a file
-ptsamesite -f domains_list.txt -s -t 100 -V             # Test domains from a file with all present subdomains, set threads count to 100 and print only vulnerable domains
+ptsamesite -f domains_list.txt -s -t 100 -V             # Test domains from a file with all subdomains, set threads to 100 and print only vulnerable domains
 ```
 
 ## Options
@@ -55,12 +53,14 @@ ptsamesite -f domains_list.txt -s -t 100 -V             # Test domains from a fi
 ## Dependencies
 ```
 dnspython
-tldextract
 ptlibs
 ```
 
 ## Version History
 ```
+1.0.1
+    - Added custom tldparser
+    - Updated for ptlibs 1.0.5+
 1.0.0
     - Code improvements
     - Updated for ptlibs 1.0.0
@@ -70,7 +70,7 @@ ptlibs
 
 ## License
 
-Copyright (c) 2023 Penterep Security s.r.o.
+Copyright (c) 2024 Penterep Security s.r.o.
 
 ptsamesite is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
