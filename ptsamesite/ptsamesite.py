@@ -2,7 +2,7 @@
 """
     Copyright (c) 2023 Penterep Security s.r.o.
 
-    ptsamesite - Same site scripting detection tool
+    ptsamesite - Same Site Scripting Detection Tool
 
     ptsamesite is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -22,11 +22,10 @@ import argparse
 import sys; sys.path.append(__file__.rsplit("/", 1)[0])
 
 from _version import __version__
-from ptlibs import ptmisclib, ptjsonlib, ptprinthelper
+from ptlibs import ptmisclib, ptjsonlib, ptprinthelper, tldparser
 from ptlibs.threads import ptthreads, printlock
 
 import dns.resolver
-import tldextract
 
 
 class PtSamesite:
@@ -50,7 +49,6 @@ class PtSamesite:
     def run(self, args) -> None:
         """Main method"""
         ptprinthelper.ptprint("Vulnerable domains:", "TITLE", not self.use_json and self.vulnerable)
-
         self.ptthreads.threads(self.domain_list, self._test_domain, args.threads)
         self.ptjsonlib.set_status("ok")
         ptprinthelper.ptprint(self.ptjsonlib.get_result_json(), "", self.use_json)
@@ -83,7 +81,7 @@ class PtSamesite:
         return data
 
     def _prepare_subdomains_for_test(self, domain):
-        ext = tldextract.extract(domain)
+        ext = tldparser.parse_url(domain)
         subdomains = []
         while domain.startswith("."):
             domain = domain[1:]
