@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-    Copyright (c) 2023 Penterep Security s.r.o.
+    Copyright (c) 2024 Penterep Security s.r.o.
 
     ptsamesite - Same Site Scripting Detection Tool
 
